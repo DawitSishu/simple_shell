@@ -1,63 +1,48 @@
 #include "main.h"
+
 /**
-* main - main entry function
-* @argc: argument variables count
-* @argv:  argument variables
-*
-* Return: 0, success.
-*/
-int main(int argc, char **argv)
+ * main - Entry point of the program
+ *
+ * Return: Always 0 (Success)
+ */
+int main(void)
 {
-char *prompt, *prompt_copy = NULL, *token;
-size_t buffer_len = 0;
-ssize_t char_no;
-const char *delimiter = " \n";
-int num_tokens = 0, i;
-(void)argc;
+    char *line = NULL;
+    char **args = NULL;
+    ssize_t read;
+    size_t len = 0;
 
-while (true)
-{
-printf("$ ");
-/* get the input*/
-char_no = getline(&prompt, &buffer_len, stdin);
-if (char_no == -1)
-{
-return (-1);
-}
-/* copy the found prompt for later use*/
-prompt_copy = malloc(sizeof(char) * char_no);
-if (prompt_copy == NULL)
-{
-return (-1);
-}
-strcpy(prompt_copy, prompt);
-/* count the number of tokens by spliting prompt with delimiter*/
-token = strtok(prompt, delimiter);
-while (token != NULL){
-num_tokens++;
-token = strtok(NULL, delimiter);
-}
-num_tokens++;
-/* allocate memory for argv to sav the tokens*/
-argv = malloc(sizeof(char *) * num_tokens);
-if (argv == NULL) {
-    return (-1);
+    while (1)
+    {
+        printf(":) ");
+        read = getline(&line, &len, stdin);
+        if (read == -1)
+        {
+            if (feof(stdin))
+            {
+                putchar('\n');
+                break;
+            }
+            else
+            {
+                perror("getline");
+                exit(EXIT_FAILURE);
+            }
+        }
+        args = parse_input(line);
+        if (args[0] != NULL)
+        {
+            if (is_exit(args[0]))
+            {
+                free(args);
+                break;
+            }
+            execute_command(args);
+        }
+        free(args);
+    }
+
+    free(line);
+    return (0);
 }
 
-/* split the copy and save the tokens in argv*/
-token = strtok(prompt_copy, delimiter);
-for (i = 0; token != NULL; i++){
-argv[i] = malloc(sizeof(char) * strlen(token));
-strcpy(argv[i], token);
-token = strtok(NULL, delimiter);
-}
-argv[i] = NULL;
-
-/*execute the carguments*/
-exec_command(argv);
-}
-free(prompt_copy);
-free(prompt);
-
-return (0);
-}
