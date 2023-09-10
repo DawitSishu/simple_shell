@@ -61,4 +61,3 @@ free(prompt);
 
 return (0);
 }
-
