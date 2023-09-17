@@ -3,7 +3,7 @@
 /**
  * find_command - Function to find the command executable path.
  * @cmd: The command to search for.
- * Return: A string representing the path to the command executable, or NULL if not found.
+ * Return: A string representing the path to the command.
  */
 char *find_command(char *cmd)
 {

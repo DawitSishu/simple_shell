@@ -19,4 +19,3 @@ char *find_command(char *cmd);
 int is_exit(char *cmd);
 
 #endif /* MAIN_H */
-
