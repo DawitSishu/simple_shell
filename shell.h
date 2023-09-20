@@ -2,7 +2,7 @@
 #define SHELL_H
 
 #include <stdio.h>
-#include <unistd.h> 
+#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
@@ -94,4 +94,4 @@ int print_alias(data_of_program *data, char *alias);
 char *get_alias(data_of_program *data, char *alias);
 int set_alias(char *alias_string, data_of_program *data);
 
-#endif 
+#endif
