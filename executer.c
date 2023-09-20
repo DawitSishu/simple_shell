@@ -10,13 +10,19 @@ pid_t pid;
 int status;
 char *cmd_path;
 
+if (strchr(args[0], '/') == NULL)
+{
 cmd_path = find_command(args[0]);
 if (cmd_path == NULL)
 {
 printf("Command not found\n");
 return;
 }
-
+}
+else
+{
+cmd_path = args[0];
+}
 pid = fork();
 if (pid == 0)
 {
