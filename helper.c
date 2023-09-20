@@ -21,7 +21,7 @@ data->tokens = NULL;
 
 /**
 * free_all_data - free all field of the data
-* @data: struct of the program's data
+* @data: structure of the program's data
 * Return: Nothing
 */
 void free_all_data(data_of_program *data)
@@ -37,7 +37,7 @@ free_array_of_pointers(data->alias_list);
 }
 
 /**
-* free_array_of_pointers - frees each pointer of an array of pointers and the
+* free_array_of_pointers - frees each pointer of an array of pointers.
 * array too
 * @array: array of pointers
 * Return: nothing

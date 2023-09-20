@@ -133,7 +133,7 @@ return (0);
 }
 
 /**
-* builtin_alias - add, remove or show aliases
+* builtin_alias - adds removes or show aliases
 * @data: struct for the program's data
 * Return: zero if sucess, or other number if its declared in the arguments
 */
