@@ -64,7 +64,7 @@ return (0);
 }
 
 /**
-* env_remove_key - remove a key from the environment
+* env_remove_key - removs key from the environment
 * @key: the key to remove
 * @data: the sructure of the program's data
 * Return: 1 if the key was removed, 0 if the key does not exist;

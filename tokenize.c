@@ -25,7 +25,7 @@ counter++;
 }
 }
 
-data->tokens = malloc(counter * sizeof(char *));
+data->tokens = malloc(counter *sizeof(char *));
 if (data->tokens == NULL)
 {
 perror(data->program_name);

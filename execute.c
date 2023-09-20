@@ -20,7 +20,7 @@ else
 {
 pidd = fork();
 if (pidd == -1)
-{ 
+{
 perror(data->command_name);
 exit(EXIT_FAILURE);
 }
